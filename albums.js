@@ -1,3 +1,6 @@
+import { firstLetterUpperCase } from './functions.js';
+import renderNavigation from './navigation.js';
+
 async function albumsInfo (){
     const albumsRes = await fetch('https://jsonplaceholder.typicode.com/albums?_embed=photos');
     const albums = await albumsRes.json();
@@ -22,7 +25,7 @@ async function albumsInfo (){
       albumItem.classList.add('album-item');
   
       albumItem.innerHTML = `<a href="./album.html?album_id=${album.id}">
-                             <h2 class="album-title">${album.title}</h2>
+                             <h2 class="album-title">${firstLetterUpperCase(album.title)}</h2>
                              <img src="${randomPhoto.thumbnailUrl}" alt="${randomPhoto.title}">
                              </a>`;
   

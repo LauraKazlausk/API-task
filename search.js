@@ -1,9 +1,29 @@
+import {firstLetterUpperCase, getUrlParam} from './functions.js';
+import renderNavigation from './navigation.js';
 async function init() {
-    const queryParams = document.location.search;
-    const urlParams = new URLSearchParams(queryParams);
-    const search = urlParams.get('search');
-    
+  outerSearchForm ();
+  innerSearchForm ();
+}
+function outerSearchForm (){
+
+  const search = getUrlParam('search');
+  getSearchResults(search);
+  }
+
+  function innerSearchForm (){
+    let searchForm = document.querySelector('#inner-search-form');
+    searchForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      let searchInput = event.target.elements['search-input'].value;
+      getSearchResults(searchInput);
+      event.target.reset();
+    })
+  }
+
+  async function getSearchResults(search){
     const searchResults = document.querySelector('#search-results');
+    searchResults.innerHTML = '';
+
     const searchPageTitle = document.createElement('h1');
     searchPageTitle.classList.add('page-title', 'search-page-title');
     searchPageTitle.textContent = `Results, search phrase: ${search}`;
@@ -48,12 +68,13 @@ async function init() {
       title: 'Albums',
       path: 'album',
     };
-  
+
     renderSearchResults(params);
   }
   
   function renderSearchResults(paramsObj) {
     let { data, parentElement, title, path } = paramsObj;
+
   
     const wrapper = document.createElement('div');
     wrapper.classList.add('search-result-wrapper');
@@ -63,7 +84,41 @@ async function init() {
     wrapperTitle.classList.add('search-wrapper-title');
   
     wrapper.append(wrapperTitle);
+
+
+
+      
+
+    // if (searchText.length > 0){
+    //   searchName.addEventListener('submit',(event) => {
+    //     event.preventDefault();
+    //     wrapperTitle.textContent = title + ':';
   
+    //     const list = document.createElement('ul');
+    //     list.classList.add('search-list');
+    
+    //     wrapper.append(list);
+    
+    //     data.map(item => {
+    //       const itemElement = document.createElement('li');
+    //       itemElement.classList.add('search-list-item');
+    
+    //       const linkElement = document.createElement('a');
+    //       linkElement.textContent = item.title;
+    //       linkElement.href = `./${path}.html?${path}_id=${item.id}`;
+    
+    //       itemElement.append(linkElement);
+    //       list.append(itemElement);
+    //     })
+    //   })
+    // }else {
+    //   wrapperTitle.textContent = 'No ' + title.toLowerCase() + '... :(';
+    // }
+
+
+
+
+
     if (data.length > 0) {
       wrapperTitle.textContent = title + ':';
   

@@ -1,6 +1,9 @@
+import renderNavigation from './navigation.js';
+import { firstLetterUpperCase } from './functions.js'
 
  async function init (){
     const contentWrapper = document.querySelector('#content-wrapper');
+    
     const postsListElement = await renderPosts ();
     const albumsListElement = await renderAlbums();
 
@@ -19,11 +22,11 @@ async function renderPosts (){
     
         let postTitle = document.createElement('h2');
         postTitle.classList.add('post-title')
-        let postTitleText = post.title;
+        let postTitleText = firstLetterUpperCase(post.title);
     
         let postText = document.createElement('p');
         postText.classList.add('post-body');
-        let postParagraphText = post.body;
+        let postParagraphText = firstLetterUpperCase(post.body);
 
         let postAuthorName = document.createElement('span');
         postAuthorName.classList.add('post-author-name')
@@ -85,7 +88,7 @@ albumsWrapper.id = 'albums-wrapper'
         albumItem.classList.add('album-item');
         albumsWrapper.append(albumItem)
         
- albumItem.innerHTML = `<h3 class="album-title"><a href="./album.html?album_id=${album.id}">${album.title}</a></h3>
+ albumItem.innerHTML = `<h3 class="album-title"><a href="./album.html?album_id=${album.id}">${firstLetterUpperCase(album.title)}</a></h3>
                             <div class="album-author">Album created by: ${album.user.name}</div>
                             <img src="${album.photos[0].thumbnailUrl}" alt="${album.photos[0].title}">`;
     

@@ -1,0 +1,56 @@
+body{
+    align-items: center;
+    background: #d7dee2;
+    color: black;
+}
+.post-wrapper {
+    border: solid 1px transparent;
+    width: 80%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    padding-left: 10px;
+    background: rgb(89,112,121);
+    background: linear-gradient(126deg, rgba(89,112,121,1) 0%, rgba(236,239,241,1) 100%);
+
+
+}
+a{  color: rgb(75, 69, 69);
+    text-decoration: none;
+    list-style: none;
+}
+.album-item{
+    border: solid 1px transparent;
+    width: 80%;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    padding-left: 10px;
+    background: rgb(89,112,121);
+    background: linear-gradient(126deg, rgba(89,112,121,1) 0%, rgba(236,239,241,1) 100%);
+}
+#posts-wrapper{
+    border: solid 1px transparent;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    padding-left: 10px;
+    background: rgb(89,112,121);
+    background: linear-gradient(126deg, rgba(89,112,121,1) 0%, rgba(236,239,241,1) 100%);
+    margin-top: 15px;
+}
+.users-list{
+    margin-bottom: 10px;
+    margin-top: 15px;
+    padding: 15px 25px ;
+}
+#user-info,
+#post-wrapper{
+    border: solid 1px transparent;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    padding-left: 10px;
+    background: rgb(89,112,121);
+    background: linear-gradient(126deg, rgba(89,112,121,1) 0%, rgba(236,239,241,1) 100%);
+    margin-top: 15px;
+}
+
+

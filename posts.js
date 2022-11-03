@@ -1,8 +1,11 @@
+import renderNavigation from './navigation.js';
+import {firstLetterUpperCase, getUrlParam} from './functions.js';
+
+
+
 function init() {
-    const queryParams = document.location.search;
-    const urlParams = new URLSearchParams(queryParams);
-    const userId = urlParams.get('user_id');
-    
+   const userId = getUrlParam('user_id')
+
     let fetchUrl = '';
     if(userId){
         fetchUrl = `https://jsonplaceholder.typicode.com/users/${userId}/posts`;
@@ -28,7 +31,7 @@ function init() {
         posts.map(post=>{
             let postItem = document.createElement('li');
             postItem.classList.add('post-postItem');
-            postItem.innerHTML = `<a href="./post.html>post_id=${post.id}">${post.title} </a>`
+            postItem.innerHTML = `<a href="./post.html?post_id=${post.id}">${firstLetterUpperCase(post.title)} </a>`
             postsList.append(postItem)
         })
     })

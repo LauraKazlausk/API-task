@@ -1,3 +1,5 @@
+import renderNavigation from './navigation.js';
+
 async function usersInfo (){
     const usersRes = await fetch('https://jsonplaceholder.typicode.com/users?_embed=posts');
     const users = await usersRes.json();
@@ -16,10 +18,12 @@ async function usersInfo (){
 
     users.map(user=>{
             let userItem = document.createElement('li');
-            userItem.innerHTML= `<a href="./user.html?user_id=${user.id}">${user.name} (${user.posts.lenght})</a>`
+            userItem.innerHTML= `<a href="./user.html?user_id=${user.id}">${user.name} (${user.posts.length})</a>`
 
             usersList.append(userItem)
     })
+
+    
 }
 
 usersInfo();
