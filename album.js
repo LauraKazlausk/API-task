@@ -1,5 +1,5 @@
 import renderNavigation from './navigation.js';
-import { firstLetterUpperCase, getUrlParam } from './functions.js';
+import { fetchData, firstLetterUpperCase, getUrlParam } from './functions.js';
 
  function init (){
      
@@ -12,18 +12,22 @@ import { firstLetterUpperCase, getUrlParam } from './functions.js';
         }else {
             renderErrorMessage (albumWrapper)
         }
+
     }
-        init ()
+       
 
 async function renderAlbumList (albumId, albumWrapper){
- const albumRes = await fetch(`https://jsonplaceholder.typicode.com/albums/${albumId}?_embed=photos&_expand=user`);
-        const album = await albumRes.json(); 
+    const album = await fetchData(`https://jsonplaceholder.typicode.com/albums/${albumId}?_embed=photos&_expand=user`) 
     
-      
+    if(!albumId){
+        renderErrorMessage(albumWrapper);
+        return;
+    }  
+
     let {title, user, photos} = album;
 
     let albumTitle = document.createElement('h1');
-    albumTitle.classList.add('album-title');
+    albumTitle.classList.add('album-title', 'page-title');
     albumTitle.textContent = firstLetterUpperCase(title);
     
     let albumAuthor = document.createElement('span');
@@ -50,6 +54,8 @@ function renderErrorMessage (parentElement){
     parentElement.innerHTML = `<h1> Something went wrong.. Album not found.</h1>
     <a href="index.html">Back to home page</a>`
 }
+
+init ()
 
     
     

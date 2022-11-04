@@ -1,4 +1,4 @@
-import {firstLetterUpperCase, getUrlParam} from './functions.js';
+import {createLinkList, getUrlParam} from './functions.js';
 import renderNavigation from './navigation.js';
 async function init() {
   outerSearchForm ();
@@ -85,62 +85,21 @@ function outerSearchForm (){
   
     wrapper.append(wrapperTitle);
 
-
-
-      
-
-    // if (searchText.length > 0){
-    //   searchName.addEventListener('submit',(event) => {
-    //     event.preventDefault();
-    //     wrapperTitle.textContent = title + ':';
-  
-    //     const list = document.createElement('ul');
-    //     list.classList.add('search-list');
-    
-    //     wrapper.append(list);
-    
-    //     data.map(item => {
-    //       const itemElement = document.createElement('li');
-    //       itemElement.classList.add('search-list-item');
-    
-    //       const linkElement = document.createElement('a');
-    //       linkElement.textContent = item.title;
-    //       linkElement.href = `./${path}.html?${path}_id=${item.id}`;
-    
-    //       itemElement.append(linkElement);
-    //       list.append(itemElement);
-    //     })
-    //   })
-    // }else {
-    //   wrapperTitle.textContent = 'No ' + title.toLowerCase() + '... :(';
-    // }
-
-
-
-
-
-    if (data.length > 0) {
+    if (data.length > 0){
       wrapperTitle.textContent = title + ':';
-  
-      const list = document.createElement('ul');
-      list.classList.add('search-list');
-  
-      wrapper.append(list);
-  
-      data.map(item => {
-        const itemElement = document.createElement('li');
-        itemElement.classList.add('search-list-item');
-  
-        const linkElement = document.createElement('a');
-        linkElement.textContent = item.title;
-        linkElement.href = `./${path}.html?${path}_id=${item.id}`;
-  
-        itemElement.append(linkElement);
-        list.append(itemElement);
-      })
-    } else {
-      wrapperTitle.textContent = 'No ' + title.toLowerCase() + '... :(';
+
+      let params = {
+        data,
+        path,
+        listClasses: ['search-list'],
+        itemClasses: ['search-item']
+      }
+      const searchResultElement = createLinkList(params);
+      wrapper.append(searchResultElement);
+    }else {
+      wrapperTitle.textContent = 'No ' + title.toLowerCase() + '...';
     }
+
   }
   
   init();

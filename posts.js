@@ -1,9 +1,9 @@
 import renderNavigation from './navigation.js';
-import {firstLetterUpperCase, getUrlParam} from './functions.js';
+import {createLinkList, fetchData, getUrlParam, createElement} from './functions.js';
 
 
 
-function init() {
+async function init() {
    const userId = getUrlParam('user_id')
 
     let fetchUrl = '';
@@ -13,28 +13,21 @@ function init() {
         fetchUrl = 'https://jsonplaceholder.typicode.com/posts'
     }
     
+    const posts = await fetchData(fetchUrl);
+
+    let postWrapper = document.querySelector('#posts-wrapper');
+
+    const pageTitle = createElement('h1', 'Posts List:', 'page-title')
     
-    fetch(fetchUrl)
-    .then(res=>res.json())
-    .then(posts =>{
-        let postWrapper = document.querySelector('#posts-wrapper');
-    
-        let pageTitle = document.createElement('h1');
-        pageTitle.classList.add('page-title')
-        pageTitle.textContent = 'Posts List:';
-    
-        let postsList = document.createElement('ul');
-        postsList.classList.add('posts-list');
-    
-        postWrapper.append(pageTitle, postsList);
-    
-        posts.map(post=>{
-            let postItem = document.createElement('li');
-            postItem.classList.add('post-postItem');
-            postItem.innerHTML = `<a href="./post.html?post_id=${post.id}">${firstLetterUpperCase(post.title)} </a>`
-            postsList.append(postItem)
-        })
+    const postsListElement = createLinkList({
+        data:posts,
+        path: 'post',
+        listClasses: ['posts-list'],
+        itemClasses: ['post-item']
     })
+    postWrapper.append(pageTitle, postsListElement);
     }
+
+
     init()
     
