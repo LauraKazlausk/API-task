@@ -1,23 +1,32 @@
-import { firstLetterUpperCase, fetchData } from './functions.js';
+import { firstLetterUpperCase, fetchData, getUrlParam } from './functions.js';
 import renderNavigation from './navigation.js';
-
+import paginationLinks from './pagination.js';
 
 
 async function init (){
-   const albums = await fetchData('https://jsonplaceholder.typicode.com/albums?_embed=photos');
+
+ const limit = getUrlParam ('limit')?getUrlParam('limit'):10;
+  const page = getUrlParam('page')?getUrlParam('page'):1;
+  const pagination = paginationLinks({page,limit});
+
+  const albums = await fetchData(`https://jsonplaceholder.typicode.com/albums?_page${page}&_embed=photos&_limit=${limit}`);
+  
 
  const albumsWrapper = document.querySelector('#albums-wrapper');
- const albumsElement = createAlbumList(albums);
- albumsWrapper.append(albumsElement);
-  }
+  const albumsElement = createAlbumList(albums);
+  
+
+  albumsWrapper.append(pagination)
  
-  // albumsWrapper.append(albumsElement)
 
-  function createAlbumList (albums){
+  
+  albumsWrapper.append(albumsElement);
+}
 
+function createAlbumList (albums){
+  
   const albumsContainer = document.createElement('div');
   albumsContainer.classList.add('albums-container')
-
 
   const pageTitle = document.createElement('h1');
   pageTitle.classList.add('page-title');
@@ -43,6 +52,7 @@ async function init (){
   
    albumsList.append(albumItem);
 })
+
 
   return albumsContainer;
 }

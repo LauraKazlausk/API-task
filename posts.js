@@ -5,14 +5,15 @@ import paginationLinks from './pagination.js';
 
 
 async function init() {
-    const userId = getUrlParam('user_id')
-    const page = getUrlParam('page')
+    const userId = getUrlParam('user_id');
+    const limit = getUrlParam ('limit')?getUrlParam('limit'):10;
+    const page = getUrlParam('page')?getUrlParam('page'):1;
   
     let fetchUrl = '';
     if(userId){
         fetchUrl = `https://jsonplaceholder.typicode.com/users/${userId}/posts`;
     }else {
-        fetchUrl = `https://jsonplaceholder.typicode.com/posts?_page=${page}&_limit=25` 
+        fetchUrl = `https://jsonplaceholder.typicode.com/posts?_page=${page}&_limit=${limit}` 
     }
 
 
@@ -29,33 +30,12 @@ async function init() {
         listClasses: ['posts-list'],
         itemClasses: ['post-item']
     });
-    const pagination = paginationLinks(page);
+
+
+    const pagination = paginationLinks({page,limit});
 
     postWrapper.append(pageTitle,pagination, postsListElement);
     }
-
-// function pagePeg (){
-
-
-   
-//     let fetchAddress = '';
-//     const page = getUrlParam('page_id')
-//     if(page==1){
-//         fetchAddress = `https://jsonplaceholder.typicode.com/posts?_page=1&_limit=25` 
-//     }
-//     if(page==2){
-//         fetchAddress = `https://jsonplaceholder.typicode.com/posts?_page=2&_limit=25` 
-//     }
-//     if(page==3){
-//         fetchAddress = `https://jsonplaceholder.typicode.com/posts?_page=3&_limit=25` 
-//     }
-//     if(page==4){
-//         fetchAddress = `https://jsonplaceholder.typicode.com/posts?_page=4&_limit=25` 
-//     }
-
-//     let postWrapper = document.querySelector('#posts-wrapper');
-//     postWrapper.append(page1, page2, page3, page4)
-// }
     init()
 
 

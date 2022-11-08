@@ -7,7 +7,7 @@ function init(){
     userForm.addEventListener('submit', async (event) => {
         event.preventDefault();
 
-    const {name, username, email,street, suite, city, zipcode, lat, lng,  phone, website, companyName, catchPhrase, companyBs }  = event.target.elements;
+    const {name, username, email,street, suite, city, zipcode,  phone, website, companyName, catchPhrase, companyBs }  = event.target.elements;
 
     const newUserData = {
     name: name.value,
@@ -18,10 +18,6 @@ function init(){
         suite: suite.value,
         city: city.value,
         zipcode: zipcode.value,
-        geo: {
-            lat: lat.value,
-            lng: lng.value, 
-        }
     },
     phone: phone.value,
     website:website.value,
@@ -38,6 +34,7 @@ function init(){
         'Content-type': 'application/json; charset=UTF-8',
     },
     });
+
 
     const createdUser = await res.json();
 

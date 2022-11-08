@@ -121,7 +121,6 @@ export async function createAuthorOptionElements(selectElement){
 
     return newPostElement;
 }
-
 export  function createUserInfoElement(user){
   const userInformation = createElement('div', '', 'user-information');
 
@@ -134,7 +133,7 @@ export  function createUserInfoElement(user){
   <li><strong>Phone:</strong> <a href="tel:${phone}">${phone}</a></li>
   <li><strong>Address:</strong> <a href="#">${street} ${suite}, ${city} (zipcode: ${zipcode})</a></li>
   <li><strong>Website:</strong> <a href="https://${website}">${website}</a></li>
-  <li><strong>Work:</strong> ${company.name}}</li>
+  <li><strong>Work:</strong> ${company.name}</li>
   <li><strong>Company Cath Phrase:</strong> ${company.catchPhrase} </li>
   </ul>`
   return userInformation;

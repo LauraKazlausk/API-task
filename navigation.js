@@ -2,6 +2,7 @@ function renderNavigation(){
     const header = document.createElement('header');
     const nav = document.createElement('nav');
     const menuList = document.createElement('ul');
+    menuList.classList.add('nav-menu-list');
     const searchForm = document.createElement('form');
 
     document.body.prepend(header);

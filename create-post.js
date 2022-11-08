@@ -1,4 +1,4 @@
-import { createAuthorOptionElements, createNewPostElement } from "./functions.js";
+import { createAuthorOptionElements, createNewPostElement,  } from "./functions.js";
 
 function init (){
 const createPostForm = document.querySelector('#create-post-form');

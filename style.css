@@ -1,53 +1,65 @@
+:root{
+    --background-color: #d7dee2;
+    --margin-10: 10px;
+}
+.nav-menu-list{
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 50px;
+    font-size: 20px;
+}
+nav{
+    display: flex;
+    flex-direction: wrap;
+    align-items: baseline;
+    justify-content: space-evenly;
+}
 body{
     align-items: center;
-    background: #d7dee2;
+    background: var(--background-color);
     color: rgb(23, 25, 27);
 }
 .post-wrapper {
     border: solid 1px transparent;
     width: 80%;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    padding-left: 10px;
+    border-radius: var(--margin-10);
+    margin-bottom: var(--margin-10);
+    padding-left:var(--margin-10);
     background: rgb(89,112,121);
     background: linear-gradient(126deg, rgba(89,112,121,1) 0%, rgba(236,239,241,1) 100%);
-
-
 }
-a{  color: rgb(75, 69, 69);
+a
+{  color: rgb(75, 69, 69);
     text-decoration: none;
-    list-style: none;
+}
+li{
+list-style: none;
 }
 .album-item{
     border: solid 1px transparent;
     width: 80%;
-    padding: 10px;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    padding-left: 10px;
+    padding: var(--margin-10);
+    border-radius: var(--margin-10);
+    margin-bottom: var(--margin-10);
+    padding-left:var(--margin-10);
     background: rgb(89,112,121);
     background: linear-gradient(126deg, rgba(89,112,121,1) 0%, rgba(236,239,241,1) 100%);
 }
-#posts-wrapper{
-    border: solid 1px transparent;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    padding-left: 10px;
-    background: rgb(89,112,121);
-    background: linear-gradient(126deg, rgba(89,112,121,1) 0%, rgba(236,239,241,1) 100%);
-    margin-top: 15px;
-}
+
 .users-list{
-    margin-bottom: 10px;
-    margin-top: 15px;
-    padding: 15px 25px ;
-}
-#user-info,
-#post-wrapper{
     border: solid 1px transparent;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    padding-left: 10px;
+    border-radius: var(--margin-10);
+    padding:20px;
+    background: rgb(89,112,121);
+    background: linear-gradient(126deg, rgba(89,112,121,1) 0%, rgba(236,239,241,1) 100%);
+    margin-top: 15px;  
+}
+.user-information, .comment-item, .post-content, #create-comment-form, .search-result-wrapper , .posts-list,
+#user-form{
+    border: solid 1px transparent;
+    border-radius: var(--margin-10);
+    margin-bottom: var(--margin-10);
+    padding: var(--margin-10);
     background: rgb(89,112,121);
     background: linear-gradient(126deg, rgba(89,112,121,1) 0%, rgba(236,239,241,1) 100%);
     margin-top: 15px;
