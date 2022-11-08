@@ -1,4 +1,4 @@
-import {createLinkList, getUrlParam} from './functions.js';
+import {createLinkList, fetchData, getUrlParam, createElement} from './functions.js';
 import renderNavigation from './navigation.js';
 async function init() {
   outerSearchForm ();
@@ -24,20 +24,13 @@ function outerSearchForm (){
     const searchResults = document.querySelector('#search-results');
     searchResults.innerHTML = '';
 
-    const searchPageTitle = document.createElement('h1');
-    searchPageTitle.classList.add('page-title', 'search-page-title');
-    searchPageTitle.textContent = `Results, search phrase: ${search}`;
+    const searchPageTitle = createElement('h1', `Results, search phrase: ${search}`, 'page-title search-page-title');
   
     searchResults.append(searchPageTitle);
   
-    const usersRes = await fetch(`https://jsonplaceholder.typicode.com/users?q=${search}`);
-    const users = await usersRes.json();
-  
-    const postsRes = await fetch(`https://jsonplaceholder.typicode.com/posts?q=${search}`);
-    const posts = await postsRes.json();
-  
-    const albumsRes = await fetch(`https://jsonplaceholder.typicode.com/albums?q=${search}`);
-    const albums = await albumsRes.json()
+    const users = await fetchData(`https://jsonplaceholder.typicode.com/users?q=${search}`);
+    const posts = await fetchData(`https://jsonplaceholder.typicode.com/posts?q=${search}`);
+    const albums = await fetchData(`https://jsonplaceholder.typicode.com/albums?q=${search}`);
     
     const formattedUsers = users.map(user => {
       const formattedUser = {
@@ -76,13 +69,10 @@ function outerSearchForm (){
     let { data, parentElement, title, path } = paramsObj;
 
   
-    const wrapper = document.createElement('div');
-    wrapper.classList.add('search-result-wrapper');
-    parentElement.append(wrapper);
+    const wrapper = createElement('div', '', 'search-result-wrapper');
+    parentElement.append(wrapper)
   
-    const wrapperTitle = document.createElement('h2');
-    wrapperTitle.classList.add('search-wrapper-title');
-  
+    const wrapperTitle = createElement('h2', '', 'search-wrapper-title');
     wrapper.append(wrapperTitle);
 
     if (data.length > 0){
@@ -99,7 +89,6 @@ function outerSearchForm (){
     }else {
       wrapperTitle.textContent = 'No ' + title.toLowerCase() + '...';
     }
-
   }
   
   init();

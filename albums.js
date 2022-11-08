@@ -1,4 +1,4 @@
-import { firstLetterUpperCase, fetchData, getUrlParam } from './functions.js';
+import { firstLetterUpperCase, fetchData } from './functions.js';
 import renderNavigation from './navigation.js';
 
 

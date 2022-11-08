@@ -1,29 +1,31 @@
 import renderNavigation from './navigation.js';
+import {createElement, createLinkList, fetchData} from './functions.js'
 
-async function usersInfo (){
-    const usersRes = await fetch('https://jsonplaceholder.typicode.com/users?_embed=posts');
-    const users = await usersRes.json();
+async function init (){
+
+    const users = await fetchData('https://jsonplaceholder.typicode.com/users?_embed=posts') ;
 
     let usersWrapper = document.querySelector('#users-wrapper');
 
-    let pageTitle = document.createElement('h1');
-    pageTitle.classList.add('page-title');
-    pageTitle.textContent = 'Users list:';
+    let pageTitle = createElement('h1', 'Users list:', 'page-title');
     
-    let usersList = document.createElement('ul');
-    usersList.classList.add('users-list');
-    
-    usersWrapper.append(pageTitle, usersList);
-
-
-    users.map(user=>{
-            let userItem = document.createElement('li');
-            userItem.innerHTML= `<a href="./user.html?user_id=${user.id}">${user.name} (${user.posts.length})</a>`
-
-            usersList.append(userItem)
+    let usersData = users.map(user=>{
+        let userObj = {
+            id: user.id,
+            title:`${user.name} (${user.posts.length})`,
+        }
+        return userObj;
     })
-
     
+    let usersListElement = createLinkList({
+        data: usersData,
+        path: 'user',
+        listClasses: ['users-list'],
+        itemClasses: ['user-item'],
+    })
+    
+    usersWrapper.append(pageTitle, usersListElement);
+   
 }
 
-usersInfo();
+init();

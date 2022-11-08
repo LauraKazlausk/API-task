@@ -47,9 +47,6 @@ async function renderAlbumList (albumId, albumWrapper){
         photosList.append(photoItem);
     })
     }
-
-    
-    
 function renderErrorMessage (parentElement){
     parentElement.innerHTML = `<h1> Something went wrong.. Album not found.</h1>
     <a href="index.html">Back to home page</a>`
