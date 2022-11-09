@@ -7,10 +7,12 @@ async function init (){
 
  const limit = getUrlParam ('limit')?getUrlParam('limit'):10;
   const page = getUrlParam('page')?getUrlParam('page'):1;
-  const pagination = paginationLinks({page, limit});
+  const pagination = paginationLinks({page, limit, total});
 
   const albums = await fetchData(`https://jsonplaceholder.typicode.com/albums?_page${page}&_embed=photos&_limit=${limit}`);
-  
+  const res = await fetch(fetchUrl)
+  const posts = await fetchData(fetchUrl);
+  const total = res.headers.get('x-total-count');
 
  const albumsWrapper = document.querySelector('#albums-wrapper');
   const albumsElement = createAlbumList(albums);
