@@ -63,9 +63,5 @@ list-style: none;
     background: linear-gradient(126deg, rgba(89,112,121,1) 0%, rgba(236,239,241,1) 100%);
     margin-top: 15px;
 }
-.user-edit-create-links{
- display: flex;
- column-gap: 50px;
-}
 
 

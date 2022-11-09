@@ -1,8 +1,8 @@
 import { createElement } from "./functions.js";
 
 export default function paginationLinks(data) {
-    let { page, limit} = data
-    let total = 100;
+    let { page, limit, total} = data
+    // let total = 100;
     let pages = Math.ceil(total / limit);
     let currentPage = Number(page);
     
@@ -64,18 +64,19 @@ function createPaginationLinkElement (data){
     //     return '';
     // }
     let {currentPage, page, className, text, pageLink, limit} = data;
+
     const pathName = document.location.pathname;
-
-
-    const location = document.location.origin;
-
+    console.log(pathName)
+    const origin = document.location.origin;
+    console.log(origin)
+    
     let paginationElement ;
 
     if (currentPage === page){
         paginationElement = createElement('span',  text, 'pagination-link current-page-link');
     }else{
         paginationElement = createElement('a',  text, 'pagination-link')
-        paginationElement.href = `.${location + pathName}?page=${pageLink}&limit=${limit}`;
+        paginationElement.href = origin + pathName +`?page=${pageLink}&limit=${limit}`;
     }
 if (className){
     paginationElement.classList.add(className)
@@ -86,3 +87,4 @@ return paginationElement;
 }
 
 
+// origin + pathName +

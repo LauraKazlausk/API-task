@@ -17,9 +17,10 @@ async function init() {
     }
 
 
-    
+    const res = await fetch(fetchUrl)
     const posts = await fetchData(fetchUrl);
-
+    const total = res.headers.get('x-total-count');
+    console.log(total)
     let postWrapper = document.querySelector('#posts-wrapper');
 
     const pageTitle = createElement('h1', 'Posts List:', 'page-title')
@@ -32,7 +33,7 @@ async function init() {
     });
 
 
-    const pagination = paginationLinks({page,limit});
+    const pagination = paginationLinks({page,limit, total});
 
     postWrapper.append(pageTitle,pagination, postsListElement);
     }

@@ -20,10 +20,8 @@ async function init (){
     const createNewUserLink = createElement('a', 'Create New User', 'create-new-user')
     createNewUserLink.href = './create-user.html';
     
-    const editedUserLink = createElement('a', 'Edit User', 'edited-user-link');
-    editedUserLink.href = './edit-user.html';
     
-    userEditCreateLinks.append(createNewUserLink, editedUserLink)
+    userEditCreateLinks.append(createNewUserLink)
 }
 // createUserInfoElement();
 

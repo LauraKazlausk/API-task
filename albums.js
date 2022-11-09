@@ -7,7 +7,7 @@ async function init (){
 
  const limit = getUrlParam ('limit')?getUrlParam('limit'):10;
   const page = getUrlParam('page')?getUrlParam('page'):1;
-  const pagination = paginationLinks({page,limit});
+  const pagination = paginationLinks({page, limit});
 
   const albums = await fetchData(`https://jsonplaceholder.typicode.com/albums?_page${page}&_embed=photos&_limit=${limit}`);
   
