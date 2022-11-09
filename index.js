@@ -11,7 +11,7 @@ contentWrapper.append(postsListElement, albumsListElement)
 }
 
 async function renderPosts (){
-    const posts = await fetchData(`https://jsonplaceholder.typicode.com/posts?_limit=15&_embed=comments&_expand=user`);
+    const posts = await fetchData(`https://jsonplaceholder.typicode.com/posts?_limit=10&_embed=comments&_expand=user`);
 
     let postsList = document.createElement('div');
     postsList.id = 'posts-list';
