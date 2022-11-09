@@ -66,13 +66,16 @@ function createPaginationLinkElement (data){
     let {currentPage, page, className, text, pageLink, limit} = data;
     const pathName = document.location.pathname;
 
+
+    const location = document.location.origin;
+
     let paginationElement ;
 
     if (currentPage === page){
         paginationElement = createElement('span',  text, 'pagination-link current-page-link');
     }else{
         paginationElement = createElement('a',  text, 'pagination-link')
-        paginationElement.href = `.${pathName}?page=${pageLink}&limit=${limit}`;
+        paginationElement.href = `.${location + pathName}?page=${pageLink}&limit=${limit}`;
     }
 if (className){
     paginationElement.classList.add(className)
@@ -81,3 +84,5 @@ if (className){
 return paginationElement;
 
 }
+
+

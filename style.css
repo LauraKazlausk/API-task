@@ -28,8 +28,7 @@ body{
     background: rgb(89,112,121);
     background: linear-gradient(126deg, rgba(89,112,121,1) 0%, rgba(236,239,241,1) 100%);
 }
-a
-{  color: rgb(75, 69, 69);
+a{  color: rgb(75, 69, 69);
     text-decoration: none;
 }
 li{
@@ -63,6 +62,10 @@ list-style: none;
     background: rgb(89,112,121);
     background: linear-gradient(126deg, rgba(89,112,121,1) 0%, rgba(236,239,241,1) 100%);
     margin-top: 15px;
+}
+.user-edit-create-links{
+ display: flex;
+ column-gap: 50px;
 }
 
 

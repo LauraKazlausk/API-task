@@ -14,9 +14,16 @@ async function init (){
     const userAlbumsElement = createUserAlbumsElement(user.albums);
     userInfo.append(userInfoElement, userPostElement, userAlbumsElement)
 
+    const userEditCreateLinks = createElement('div', '', 'user-edit-create-links')
+    userInfoElement.append(userEditCreateLinks)
+
     const createNewUserLink = createElement('a', 'Create New User', 'create-new-user')
     createNewUserLink.href = './create-user.html';
-    userInfoElement.append(createNewUserLink)
+    
+    const editedUserLink = createElement('a', 'Edit User', 'edited-user-link');
+    editedUserLink.href = './edit-user.html';
+    
+    userEditCreateLinks.append(createNewUserLink, editedUserLink)
 }
 // createUserInfoElement();
 

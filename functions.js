@@ -47,7 +47,7 @@ export function renderSinglePost(post){
   postAuthorElement.innerHTML = `Author: <a href="./user.html?user_id=${post.user.id}">${post.user.name}</a>`;
 
   let postContentElement = document.createElement('p');
-  postContentElement.classList.add('post-content');
+  postContentElement.classList.add('paragraph-content');
   postContentElement.textContent = firstLetterUpperCase(post.body);
 
   
